@@ -72,29 +72,6 @@ done
 END1=$(python -c'import time; print repr(time.time())')
 echo "Took: " $(bc -l <<< $END1-$START)
 
-
-#echo "WARM UP "
-#START=$(python -c'import time; print repr(time.time())')
-#$PSQL_COMMAND -d $DBNAME -f sql/warm-up.sql
-#END1=$(python -c'import time; print repr(time.time())')
-#echo "Took: " $(bc -l <<< $END1-$START)
-#
-#
-#
-#echo "CREATE GEAOGRAPHY "
-#START=$(python -c'import time; print repr(time.time())')
-#$PSQL_COMMAND -d $DBNAME -f sql/create_geography.sql
-#END1=$(python -c'import time; print repr(time.time())')
-#echo "Took: " $(bc -l <<< $END1-$START)
-#
-#
-#
-#echo "CREATE TOPOLOGIES "
-#START=$(python -c'import time; print repr(time.time())')
-#$PSQL_COMMAND -d $DBNAME -f sql/create_topology.sql
-#END1=$(python -c'import time; print repr(time.time())')
-#echo "Took: " $(bc -l <<< $END1-$START)
-
 echo "ROUTE FINDING QUERIES "
 START=$(python -c'import time; print repr(time.time())')
 echo "POINT DISTANCE QUERIES"
@@ -104,7 +81,7 @@ for i in $(seq 1 $times); do
     random_point $input_bbox
     second_point=$new_point
     overwrite "$i QUERY POINTS: $first_point and $second_point"
-    $PSQL_COMMAND -d $DBNAME -v start="'SRID=4326;POINT($first_point)'" -v end="'SRID=4326;POINT($second_point)'" -f sql/test_route.sql
+    $PSQL_COMMAND -d $DBNAME -v start="'SRID=4326;POINT($first_point)'" -v end="'SRID=4326;POINT($second_point)'" -f sql/test_route.sql > /dev/null
 done
 END1=$(python -c'import time; print repr(time.time())')
 echo "Took: " $(bc -l <<< $END1-$START)
