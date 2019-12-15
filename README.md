@@ -22,5 +22,5 @@ Run:
 
 Prerequisite:
 ```
-sudo apt-get install -y postgresql-10-postgis-2.4 postgresql-10-postgis-scripts postgis postgresql-10-pgrouting osm2pgsql
+sudo apt-get install -y postgresql-10-postgis-2.4 postgresql-10-postgis-scripts postgis postgresql-10-pgrouting osmosis osm2pgsql
 ````
