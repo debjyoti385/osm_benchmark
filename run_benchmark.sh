@@ -13,7 +13,7 @@ overwrite() { echo -e "\r\033[1A\033[0K$@"; }
 
 random_bbox(){
     STR1=$1
-    STR2=`echo $STR1 | sed 's/ /,/g'`
+    STR2=`echo $STR1 | sed 's/,/ /g'`
     coord=($STR2)
 
     left=${coord[0]}
@@ -29,7 +29,7 @@ random_bbox(){
 
 random_point(){
     STR1=$1
-    STR2=`echo $STR1 | sed 's/ /,/g'`
+    STR2=`echo $STR1 | sed 's/,/ /g'`
     coord=($STR2)
 
     left=${coord[0]}
